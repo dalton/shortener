@@ -1,2 +1,2 @@
-require_relative 'shortenter'
+require_relative 'shortener'
 run Sinatra::Application
