@@ -1,2 +1,2 @@
 require'./shortener'
-run Sinatra::Application
+run Shortener

@@ -1,11 +1,26 @@
 require 'sinatra'
+require_relative 'config'
 
-get %r{^/([0-9a-zA-Z]+)$} do
-  postid = params[:captures][0].to_i(36)
-  redirect "http://blogs.sitepoint.com/?p=#{postid}", 301  
+class Shortener < Sinatra::Base
+
+  helpers do
+    include LINKSTORE
+  end
+
+  get '/hi' do
+    'Hello world'
+  end
+
+  get %r{^/([0-9a-zA-Z]+)$} do
+    postid = params[:captures][0]
+    redirect link(postid), 301
+  end
+
+  post '/shorten' do
+    shorten params[:key], params[:link]
+  end
 end
 
-
-get "/*" do |path|
-  redirect "http://blogs.sitepoint.com/#{path}", 301
+def app
+  Shortener
 end

@@ -1,0 +1,5 @@
+development:
+  :redis:
+    :host: "[Enter redis host]"
+    :port: "[Enter redis port]"
+    :auth: "[Enter Google ID]"
